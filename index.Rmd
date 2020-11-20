@@ -1,0 +1,55 @@
+---
+title: "US Jail Population Analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+source("analysis.R")
+
+library(knitr)
+```
+
+## Introduction
+This assignment focus on the prison racism in U.S. I want to analysis the 
+different with region of black people population in jail
+situation. I wonder how does the population relate with area.
+
+## Summary Information
+The average value for black jail population in urban area in 2018 is `r ave_black_pop_urban_2018` and the average value for black jail population in 
+rural area in 2018 is `r ave_black_pop_rural_2018`.
+
+`r highest_black_county` has the highest population of black people in jail 
+through the years.
+
+The average value for black jail population in urban area change over the last 
+20 years is `r ave_change`.
+
+The difference between highest black jail population in urban area and 
+small/mid area is `r difference`.
+
+## Charts
+```{r, echo=FALSE, warning=FALSE, fig.width=16, fig.height=10, out.height= "50%"} 
+chart_one
+```
+This chart shows the rural area has much more black people in the prison. And 
+the population keep increase until 2008. The chart shows in 2018, both rural 
+area and urban area, the black people population decrease.
+
+
+
+```{r, echo=FALSE, warning=FALSE, fig.width=16, fig.height=10, out.height= "50%"} 
+barplot(cbind(
+  chart_two_data$white_pop_urban_2018, chart_two_data$black_pop_urban_2018), 
+  main="white jail population vs black jail population", 
+  ylab="Population", beside=TRUE)
+```
+These two bar chart compare the white people population in jail and white people population in jail with rural area. They have similar trend, but black people 
+population always is the higher one.
+
+```{r, echo=FALSE, warning=FALSE, fig.width=16, fig.height=10, out.height= "50%"} 
+county_map
+
+```
+This county_map shows the black people population in jail in every county. We 
+can tell from the map that urual area has a higher black people population in 
+jail.
